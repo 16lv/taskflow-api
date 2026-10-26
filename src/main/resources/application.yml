@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: taskflow-api
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:taskflowdb;MODE=PostgreSQL;DB_CLOSE_DELAY=-1}
+    username: ${DATABASE_USER:sa}
+    password: ${DATABASE_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: ${PORT:8080}
+
+taskflow:
+  jwt:
+    secret: ${JWT_SECRET:taskflow-dev-secret-key-at-least-32-bytes-long-for-hmac256}
+    expiration-seconds: 86400
